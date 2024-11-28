@@ -52,20 +52,20 @@ const Dropdown = () => {
       `;
     }
   
+    const services = selectedTemplate.services || {};
     textToCopy += `
       Description of Services:
-      • Labor: $${selectedTemplate.services.labor.toFixed(2)}
-      • Service Fee: $${selectedTemplate.services.serviceFee.toFixed(2)}
-      • Travel Expenses: $${selectedTemplate.services.travelExpenses.toFixed(2)}
-      • Parts: $${selectedTemplate.services.parts.toFixed(2)}
-      • Other Charges: $${selectedTemplate.services.otherCharges.toFixed(2)}
+      • Labor: $${(services.labor || 0).toFixed(2)}
+      • Service Fee: $${(services.serviceFee || 0).toFixed(2)}
+      • Travel Expenses: $${(services.travelExpenses || 0).toFixed(2)}
+      • Parts: $${(services.parts || 0).toFixed(2)}
+      • Other Charges: $${(services.otherCharges || 0).toFixed(2)}
       
-      Subtotal: $${selectedTemplate.subtotal.toFixed(2)}
-      Tax (8%): $${selectedTemplate.tax.toFixed(2)}
-      Total Amount (Including Tax): $${selectedTemplate.total.toFixed(2)}
+      Subtotal: $${(selectedTemplate.subtotal || 0).toFixed(2)}
+      Tax (8%): $${(selectedTemplate.tax || 0).toFixed(2)}
+      Total Amount (Including Tax): $${(selectedTemplate.total || 0).toFixed(2)}
     `;
   
-    // Now we copy the plain text to clipboard
     navigator.clipboard.writeText(textToCopy.trim());
     setCopiedText('Copied to clipboard!');
   
